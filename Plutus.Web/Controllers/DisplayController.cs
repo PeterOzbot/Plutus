@@ -21,23 +21,32 @@ namespace Plutus.Web.Controllers {
 
 
 
+
         /// <summary>
         /// TODO
         /// </summary>
-        public ActionResult EntryList() {
+        [Authorize]
+        public ActionResult GeneralDisplay() {
             // load the data
             IEnumerable<IEntry> entries = EntryContext.Load(null);
 
-            // create view model
-            EntryListViewModel viewModel = new EntryListViewModel(entries);
+            // create EntryListViewModel
+            EntryListViewModel entryListViewModel = new EntryListViewModel(entries);
+
+            // create EntriesGraphViewModel
+            EntriesGraphViewModel entriesGraphViewModel = new EntriesGraphViewModel();
+
+            // create generalDisplayViewModel
+            GeneralDisplayViewModel generalDisplayViewModel = new GeneralDisplayViewModel(entryListViewModel, entriesGraphViewModel);
 
             // return view
-            return View(viewModel);
+            return View(generalDisplayViewModel);
         }
 
         /// <summary>
         /// TODO
         /// </summary>
+        [Authorize]
         public JsonResult CreateEntry(double value) {
             try {
                 IEntry createdEntry = EntryContext.Create(value);
@@ -47,8 +56,6 @@ namespace Plutus.Web.Controllers {
                 // TODO: error logging
                 return Json(new { Success = false });
             }
-
-
         }
     }
 }

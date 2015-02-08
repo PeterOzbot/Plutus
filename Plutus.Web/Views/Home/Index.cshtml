@@ -6,35 +6,3 @@
     <h1>Plutus</h1>
     <p class="lead">Organize your finances.</p>
 </div>
-<a href="#" id="newEntryButton" class="fa fa-plus-square" title="Create new entry"></a>
-<div id="EntryListContainer">
-
-</div>
-
-
-<script>
-
-    $(document).ready(function () {
-
-        $("#newEntryButton").tooltip({ placement: 'top' });
-
-        $("#newEntryButton").on("click", function () {
-            $.ajax({
-                url: "@Url.Action("CreateNew", "Entry")",
-                cache: false,
-                success: function (result) {
-                    $(".modal-content").html(result);
-                    $("#myModal").modal();
-                }
-            });
-        });
-
-        $.ajax({
-            url: "@Url.Action("EntryList", "Display")",
-            cache: false,
-            success: function (result) {
-                $("#EntryListContainer").html(result);
-            }
-        });
-    });
-</script>

@@ -1,0 +1,15 @@
+﻿@model Plutus.Web.Models.GeneralDisplayViewModel
+
+@{
+    Layout = "";
+}
+@{
+    ViewBag.Title = "General Display";
+}
+
+<div style="width:100%;">
+    @{ Html.RenderPartial("EntriesGraph", Model.EntriesGraphViewModel); }
+    @{ Html.RenderPartial("EntryList", Model.EntryListViewModel); }
+</div>
+
+@Styles.Render("~/GeneralDisplay")

@@ -9,6 +9,7 @@
 
 </head>
 <body>
+
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -21,6 +22,9 @@
         <div class="container">
             <div class="navbar-header">
                 @Html.ActionLink("Plutus", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @if (User.Identity.IsAuthenticated) {
+                    <a href="#" id="newEntryButton" style="font-size:large; margin-left:10px;" class="fa fa-plus-square navbar-brand" title="Create new entry"></a>
+                }
             </div>
             <div class="navbar-collapse collapse">
                 @Html.Partial("_LoginPartial")
@@ -28,13 +32,33 @@
         </div>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
 
     <div class="container body-content">
         @RenderBody()
     </div>
 
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script>
+        alert("0");
+        @if (User.Identity.IsAuthenticated) {
+        <text>
+        $("#newEntryButton").tooltip({ placement: 'bottom' });
+        $("#newEntryButton").on("click", function () {
+            $.ajax({
+                url: "@Url.Action("CreateNew", "Entry")",
+                cache: false,
+                success: function (result) {
+                    $(".modal-content").html(result);
+                    $("#myModal").modal();
+                }
+            });
+        });
+
+        </text>
+              }
+    </script>
 </body>
 </html>
