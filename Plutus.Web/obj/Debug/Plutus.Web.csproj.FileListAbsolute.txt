@@ -53,3 +53,17 @@ J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\bin\Microsoft.Owin.Security.
 J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\obj\Debug\Plutus.Web.csprojResolveAssemblyReference.cache
 J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\obj\Debug\Plutus.Web.dll
 J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\obj\Debug\Plutus.Web.pdb
+J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\bin\Microsoft.Practices.ServiceLocation.dll
+J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\bin\Microsoft.Practices.Unity.Configuration.dll
+J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\bin\Microsoft.Practices.Unity.dll
+J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\bin\Microsoft.Practices.Unity.Mvc.dll
+J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
+J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\bin\WebActivatorEx.dll
+J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\bin\Microsoft.Practices.ServiceLocation.pdb
+J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\bin\Microsoft.Practices.ServiceLocation.xml
+J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\bin\Microsoft.Practices.Unity.xml
+J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\bin\Microsoft.Practices.Unity.Configuration.xml
+J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\bin\Microsoft.Practices.Unity.Mvc.xml
+J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
+J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\bin\Plutus.Portable.dll
+J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\bin\Plutus.Portable.pdb

@@ -1,0 +1,5 @@
+J:\Programiranje\Repositories\Git\Plutus\Plutus.Portable\obj\Debug\Plutus.Portable.csprojResolveAssemblyReference.cache
+J:\Programiranje\Repositories\Git\Plutus\Plutus.Portable\bin\Debug\Plutus.Portable.dll
+J:\Programiranje\Repositories\Git\Plutus\Plutus.Portable\bin\Debug\Plutus.Portable.pdb
+J:\Programiranje\Repositories\Git\Plutus\Plutus.Portable\obj\Debug\Plutus.Portable.dll
+J:\Programiranje\Repositories\Git\Plutus\Plutus.Portable\obj\Debug\Plutus.Portable.pdb
