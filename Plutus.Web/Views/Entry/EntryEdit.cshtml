@@ -11,5 +11,18 @@
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    <button type="button" class="btn btn-primary">Save changes</button>
+    <button type="button" class="btn btn-primary" onclick="save();">Save changes</button>
 </div>
+<script>
+    function save() {
+        $.ajax({
+            url: "@Url.Action("CreateEntry", "Entry")",
+            data: { description: 'desc', value: '2.0' },
+            dataType: "json",
+            success: function (response) {
+                alert("great!");
+                $('#myModal').modal('hide');
+            }
+        });
+    }
+</script>

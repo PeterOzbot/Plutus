@@ -38,9 +38,9 @@ namespace Plutus.Library.Data {
         /// <summary>
         /// TODO
         /// </summary>
-        public IEntry Create(double value) {
+        public IEntry Create(double value, string description) {
             // create 
-            Entry newEntry = new Entry() { Value = value, CreatedDateTime = DateTime.UtcNow };
+            Entry newEntry = new Entry() { Value = value, Description = description, CreatedDateTime = DateTime.UtcNow };
 
             // save
             Entries.Add(newEntry);

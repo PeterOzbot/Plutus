@@ -8,6 +8,14 @@ namespace Plutus.Portable.Data {
     /// <summary>
     /// TODO
     /// </summary>
-    public class IEntry {
+    public interface IEntry {
+        /// <summary>
+        /// TODO
+        /// </summary>
+        string Description { get; }
+        /// <summary>
+        /// TODO
+        /// </summary>
+        double Value { get; set; }
     }
 }

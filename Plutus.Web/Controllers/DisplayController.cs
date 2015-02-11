@@ -42,20 +42,5 @@ namespace Plutus.Web.Controllers {
             // return view
             return View(generalDisplayViewModel);
         }
-
-        /// <summary>
-        /// TODO
-        /// </summary>
-        [Authorize]
-        public JsonResult CreateEntry(double value) {
-            try {
-                IEntry createdEntry = EntryContext.Create(value);
-                return Json(new { Success = true, Entry = createdEntry });
-            }
-            catch {
-                // TODO: error logging
-                return Json(new { Success = false });
-            }
-        }
     }
 }

@@ -42,7 +42,6 @@
     @RenderSection("scripts", required: false)
 
     <script>
-        alert("0");
         @if (User.Identity.IsAuthenticated) {
         <text>
         $("#newEntryButton").tooltip({ placement: 'bottom' });

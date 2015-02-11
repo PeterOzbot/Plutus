@@ -26,3 +26,6 @@ textarea {
 .container.body-content {
     width: 100%;
 }
+body {
+    font-family: 'Segoe UI';
+}

@@ -7,9 +7,17 @@
     ViewBag.Title = "General Display";
 }
 
-<div style="width:100%;">
-    @{ Html.RenderPartial("EntriesGraph", Model.EntriesGraphViewModel); }
-    @{ Html.RenderPartial("EntryList", Model.EntryListViewModel); }
+
+<div class="row">
+    <div class="col-md-4">
+        @{ Html.RenderPartial("entrylist", Model.EntryListViewModel); }
+    </div>
+    <div class="col-md-8">
+        @{ Html.RenderPartial("entriesgraph", Model.EntriesGraphViewModel);}
+
+        @{ Html.RenderPartial("entriesgraph", Model.EntriesGraphViewModel);}
+    </div>
 </div>
+
 
 @Styles.Render("~/GeneralDisplay")
