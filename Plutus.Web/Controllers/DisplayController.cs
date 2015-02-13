@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using Plutus.Portable.Data;
+using Plutus.Web.Library.Search;
 using Plutus.Web.Models;
 
 namespace Plutus.Web.Controllers {
@@ -28,7 +29,7 @@ namespace Plutus.Web.Controllers {
         [Authorize]
         public ActionResult GeneralDisplay() {
             // load the data
-            IEnumerable<IEntry> entries = EntryContext.Load(null);
+            List<IEntry> entries = EntryContext.Load(new StandardFilter(10, EntryType.Negative)).ToList();
 
             // create EntryListViewModel
             EntryListViewModel entryListViewModel = new EntryListViewModel(entries);

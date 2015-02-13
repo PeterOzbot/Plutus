@@ -24,7 +24,7 @@ namespace Plutus.Library.Data {
         /// TODO
         /// </summary>
         public EntryContext()
-            : base("EntryContext") {
+            : base() {
         }
 
 
@@ -33,8 +33,27 @@ namespace Plutus.Library.Data {
         /// TODO
         /// </summary>
         public IEnumerable<IEntry> Load(IFilter filter) {
-            return Entries;
+            IEnumerable<IEntry> result;
+
+            // create default filter if <filter> is null
+            filter = filter ?? new DefaultFilter();
+
+            // filter !
+            result = (from entry in Entries
+                      where
+                          // filter for type
+                      ((filter.Type == EntryType.All) || (filter.Type == EntryType.Negative && entry.Value < 0) || (filter.Type == EntryType.Positive && entry.Value > 0))
+                          // filter by last id
+                      && ((filter.LastID.HasValue && entry.ID > filter.LastID) || !filter.LastID.HasValue)
+
+                      select entry)
+                // take top
+                      .Take(filter.Top);
+
+            // return data
+            return result;
         }
+
         /// <summary>
         /// TODO
         /// </summary>
@@ -48,5 +67,25 @@ namespace Plutus.Library.Data {
 
             return newEntry;
         }
+    }
+
+    /// <summary>
+    /// TODO
+    /// </summary>
+    public class DefaultFilter : IFilter {
+        /// <summary>
+        /// TODO
+        /// </summary>
+        public int Top { get { return 100; } }
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        public EntryType Type { get { return EntryType.All; } }
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        public int? LastID { get { return null; } }
     }
 }

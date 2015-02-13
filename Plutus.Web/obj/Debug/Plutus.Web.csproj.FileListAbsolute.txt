@@ -67,3 +67,5 @@ J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\bin\Microsoft.Practices.Unit
 J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
 J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\bin\Plutus.Portable.dll
 J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\bin\Plutus.Portable.pdb
+J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\bin\Plutus.Web.Library.dll
+J:\Programiranje\Repositories\Git\Plutus\Plutus.Web\bin\Plutus.Web.Library.pdb

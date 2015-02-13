@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plutus.Library", "Plutus.Li
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plutus.Portable", "Plutus.Portable\Plutus.Portable.csproj", "{4C99E98E-31F1-4509-B7DC-C3186251C7C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plutus.Web.Library", "Plutus.Web.Library\Plutus.Web.Library.csproj", "{FD7E59BB-6BDA-4B14-82B9-5260C48C0C4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{4C99E98E-31F1-4509-B7DC-C3186251C7C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C99E98E-31F1-4509-B7DC-C3186251C7C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C99E98E-31F1-4509-B7DC-C3186251C7C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD7E59BB-6BDA-4B14-82B9-5260C48C0C4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD7E59BB-6BDA-4B14-82B9-5260C48C0C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD7E59BB-6BDA-4B14-82B9-5260C48C0C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD7E59BB-6BDA-4B14-82B9-5260C48C0C4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

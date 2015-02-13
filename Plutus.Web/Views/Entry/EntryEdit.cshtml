@@ -17,7 +17,7 @@
     function save() {
         $.ajax({
             url: "@Url.Action("CreateEntry", "Entry")",
-            data: { description: 'desc', value: '2.0' },
+            data: { description: 'desc', value: '-2.0' },
             dataType: "json",
             success: function (response) {
                 alert("great!");

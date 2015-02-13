@@ -288,6 +288,10 @@
       <Project>{4c99e98e-31f1-4509-b7dc-c3186251c7c6}</Project>
       <Name>Plutus.Portable</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Plutus.Web.Library\Plutus.Web.Library.csproj">
+      <Project>{fd7e59bb-6bda-4b14-82b9-5260c48c0c4a}</Project>
+      <Name>Plutus.Web.Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
