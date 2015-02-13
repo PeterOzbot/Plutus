@@ -1,7 +1,0 @@
-J:\Programiranje\Repositories\Git\Plutus\Plutus.Web.Library\bin\Debug\Plutus.Web.Library.dll
-J:\Programiranje\Repositories\Git\Plutus\Plutus.Web.Library\bin\Debug\Plutus.Web.Library.pdb
-J:\Programiranje\Repositories\Git\Plutus\Plutus.Web.Library\bin\Debug\Plutus.Portable.dll
-J:\Programiranje\Repositories\Git\Plutus\Plutus.Web.Library\bin\Debug\Plutus.Portable.pdb
-J:\Programiranje\Repositories\Git\Plutus\Plutus.Web.Library\obj\Debug\Plutus.Web.Library.csprojResolveAssemblyReference.cache
-J:\Programiranje\Repositories\Git\Plutus\Plutus.Web.Library\obj\Debug\Plutus.Web.Library.dll
-J:\Programiranje\Repositories\Git\Plutus\Plutus.Web.Library\obj\Debug\Plutus.Web.Library.pdb
