@@ -16,15 +16,21 @@ namespace Plutus.Web.Models {
         /// TODO
         /// </summary>
         public EntriesGraphViewModel EntriesGraphViewModel { get; set; }
+        /// <summary>
+        /// TODO
+        /// </summary>
+        public EntriesStatisticsViewModel EntriesStatisticsViewModel { get; set; }
+
 
 
 
         /// <summary>
         /// TODO
         /// </summary>
-        public GeneralDisplayViewModel(EntryListViewModel entryListViewModel, EntriesGraphViewModel entriesGraphViewModel) {
+        public GeneralDisplayViewModel(EntryListViewModel entryListViewModel, EntriesGraphViewModel entriesGraphViewModel, EntriesStatisticsViewModel entriesStatisticsViewModel) {
             EntriesGraphViewModel = entriesGraphViewModel;
             EntryListViewModel = entryListViewModel;
+            EntriesStatisticsViewModel = entriesStatisticsViewModel;
         }
     }
 }

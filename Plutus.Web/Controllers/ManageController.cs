@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Microsoft.Practices.Unity;
 using Plutus.Web.Models;
 
 namespace Plutus.Web.Controllers
@@ -13,6 +14,7 @@ namespace Plutus.Web.Controllers
     [Authorize]
     public class ManageController : Controller
     {
+        [InjectionConstructor]
         public ManageController()
         {
         }

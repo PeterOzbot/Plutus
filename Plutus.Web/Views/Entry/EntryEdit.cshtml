@@ -1,28 +1,110 @@
-﻿@{
+﻿@model  Plutus.Web.Models.Entry.Entry
+@{
     Layout = "";
 }
 
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+    <h4 class="modal-title" id="myModalLabel">Create new Entry</h4>
 </div>
-<div class="modal-body">
-    ...
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    <button type="button" class="btn btn-primary" onclick="save();">Save changes</button>
-</div>
+
+@using (Ajax.BeginForm("CreateEntry", "Entry", new AjaxOptions {
+    InsertionMode = System.Web.Mvc.Ajax.InsertionMode.InsertBefore,
+    HttpMethod = "POST",
+    OnSuccess = "OnSuccess",
+    OnBegin = "OnBegin"
+}, new { @id = "EditEntryForm", @class = "form" })) {
+    <div class="modal-body">
+        <fieldset>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Value, new { @class = "control-label" })
+
+                @Html.TextBoxFor(m => m.Value, new { @class = "form-control focusFirst" })
+                @Html.ValidationMessageFor(m => m.Value)
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Description, new { @class = "control-label" })
+
+                @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Description)
+
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+    </div>
+}
+
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@
 <script>
-    function save() {
+    function OnSuccess(response) {
+        $('#myModal').modal('hide');
+        $(".entryList-content").prepend(response.Entry);
+    }
+    function OnBegin(response) {
+        if (!$("#EditEntryForm").valid()) {
+            alert("notValid!");
+        }
+        else {
+            alert("start!");
+        }
+    }
+
+    $(".focusFirst").val("");
+    $('#myModal').on('shown.bs.modal', function () {
+        $(".focusFirst").focus();
+    })
+
+    //Trigger validation
+    var $form = $("#EditEntryForm");
+    // Unbind existing validation
+    $form.unbind();
+    $form.data("validator", null);
+    // Check document for changes
+    $.validator.unobtrusive.parse(document);
+    // Re add validation with changes
+    $form.validate($form.data("unobtrusiveValidation").options);
+
+    @*function save() {
         $.ajax({
             url: "@Url.Action("CreateEntry", "Entry")",
-            data: { description: 'desc', value: '-2.0' },
+            data: {
+                description: 'Cras dolor est, maximus a sapien ut, volutpat egestas libero. Etiam tempor consectetur nisl non bibendum. Pellentesque convallis non tortor ac ultrices. Mauris at dolor in massa iaculis posuere. Curabitur vehicula non purus quis porttitor. Aenean varius, justo ac dapibus hendrerit, enim nibh varius odio, in ullamcorper nibh nibh rhoncus arcu. Maecenas varius facilisis nisl eu blandit. Donec eget eleifend tortor.',
+                value: '222222222222222.0'
+            },
             dataType: "json",
             success: function (response) {
                 alert("great!");
                 $('#myModal').modal('hide');
             }
         });
-    }
+    }*@
+
+    //$(document).ready(function () {
+    //    var validator = $('form').data('validator');
+    //    validator.settings.showErrors = function (map, errors) {
+    //        this.defaultShowErrors();
+    //        this.checkForm();
+    //        if (this.errorList.length)
+    //            $(this.currentForm).triggerHandler("invalid-form", [this]);
+    //        else
+    //            $(this.currentForm).resetSummary();
+    //    };
+
+    //    jQuery.fn.resetSummary = function () {
+    //        var form = this.is('form') ? this : this.closest('form');
+    //        form.find("[data-valmsg-summary=true]")
+    //            .removeClass("validation-summary-errors")
+    //            .addClass("validation-summary-valid")
+    //            .find("ul")
+    //            .empty();
+    //        return this;
+    //    };
+    //});
 </script>

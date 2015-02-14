@@ -31,5 +31,20 @@ namespace Plutus.Library.Data {
         /// </summary>
         [NotMapped]
         public EntryType Type { get { return Value > 0 ? EntryType.Positive : EntryType.Negative; } }
+
+
+
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        public Entry() { }
+        /// <summary>
+        /// TODO
+        /// </summary>
+        public Entry(IEntry entry) {
+            Value = entry.Value;
+            Description = entry.Description;
+        }
     }
 }

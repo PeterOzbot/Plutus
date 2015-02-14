@@ -1,27 +1,10 @@
-﻿.entryList {
-    height: 800px;
-    ;
-    /*width: 50%;
-    height: 300px;
-    margin-top: 50px;*/
-}
-
+﻿/* Graph */
 .entriesGraphs {
     height: 400px;
-    background-color: blue;
+    border: 1px solid blue;
     /*width: 50%;
     height: 300px;
     float: right;*/
-}
-
-.entryList-title {
-    font-size: 25px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 25%;
-}
-
-.entryList-content {
 }
 
 .entriesGraph-title {
@@ -31,25 +14,134 @@
     width: 25%;
 }
 
+
+
+
+/* List */
+.entryList {
+    height: 800px;
+    /*width: 50%;
+    height: 300px;
+    margin-top: 50px;*/
+}
+
+.entryList-title {
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    /*border:1px solid blue;*/
+}
+
+    .entryList-title:after {
+        content: "";
+        position: absolute;
+        height: 5px;
+        border-bottom: 1px solid #E1E1E1;
+        left: 7.5px;
+        width: 100%;
+    }
+
+.entryList-content {
+    overflow: auto;
+    height: 800px;
+}
+
+
+
+/* Statistics */
+.entriesStatistics {
+    height: 400px;
+}
+
+.entriesStatistics-title {
+    font-size: 25px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+    .entriesStatistics-title:after {
+        content: "";
+        position: absolute;
+        height: 5px;
+        border-bottom: 1px solid #E1E1E1;
+        left: 0;
+        width: 90%;
+    }
+
+.entriesStatistics-content {
+    height: 325px;
+    margin-top: 20px;
+    font-size: 20px;
+    /*margin-left:20px;*/
+}
+
+    .entriesStatistics-content table {
+        height: 100%;
+        width: 100%;
+    }
+
+.entriesStatistics-content-totalSpending {
+}
+
+.totalSpending-label {
+}
+
+.totalSpending-value {
+    color: red;
+}
+
+.entriesStatistics-content-totalEarnings {
+}
+
+.totalEarnings-label {
+}
+
+.totalEarnings-value {
+    color: green;
+}
+
+
+/*List Elements*/
 .entry-cell-container {
-    background-color: yellow;
+    border: 1px solid #E1E1E1;
+    background-color: #EBEBEB;
     margin-top: 20px;
 }
 
 .entry-cell-value {
+    /*border: 1px solid blue;*/
     font-size: 25px;
-    margin:5px;
-    margin-left:15px;
-    float:right;
-}
-
-.entry-cell-description {
-    font-size: 20px;
-    margin:5px;
+    margin: 5px;
+    /*float: right;
+    right: 40%;
+    position: absolute;*/
 }
 
 .entry-cell-icon {
-    font-size:25px;
-    margin:5px;
-    float:left;
+    /*border: 1px solid yellow;*/
+    font-size: 25px;
+    margin: 5px;
+    /*float: left;
+    left: 40%;
+    position: absolute;*/
+}
+
+    .entry-cell-icon i {
+        float: right;
+    }
+
+.entry-cell-description {
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    max-height: 100px;
+    overflow: hidden;
+    /*-ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;*/
 }

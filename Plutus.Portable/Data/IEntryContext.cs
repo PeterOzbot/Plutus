@@ -18,6 +18,6 @@ namespace Plutus.Portable.Data {
         /// <summary>
         /// TODO
         /// </summary>
-        IEntry Create(double value, string description);
+        IEntry Create(IEntry entry);
     }
 }

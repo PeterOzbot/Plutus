@@ -1,0 +1,39 @@
+﻿@model Plutus.Web.Models.EntriesStatisticsViewModel
+
+@{
+    Layout = "";
+}
+
+<div class="entriesStatistics">
+    <div class="entriesStatistics-title ">
+        <p>Statistics</p>
+    </div>
+
+    <div class="entriesStatistics-content">
+        <table>
+            <tr style="height:20%;">
+                <td style="width:50%;">
+                    <div class="entriesStatistics-content-totalEarnings">
+                        <div class="totalEarnings-label">
+                            Total Earnings
+                        </div>
+                        <div class="totalEarnings-value">
+                            @Model.TotalEarnings
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="entriesStatistics-content-totalSpending">
+                        <div class="totalSpending-label">
+                            Total Spending
+                        </div>
+                        <div class="totalSpending-value">
+                            @Model.TotalSpending
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr></tr>
+        </table>
+    </div>
+</div>

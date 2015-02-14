@@ -46,6 +46,9 @@ namespace Plutus.Library.Data {
                           // filter by last id
                       && ((filter.LastID.HasValue && entry.ID > filter.LastID) || !filter.LastID.HasValue)
 
+                      // order
+                      orderby entry.ID descending
+
                       select entry)
                 // take top
                       .Take(filter.Top);
@@ -57,9 +60,9 @@ namespace Plutus.Library.Data {
         /// <summary>
         /// TODO
         /// </summary>
-        public IEntry Create(double value, string description) {
+        public IEntry Create(IEntry entry) {
             // create 
-            Entry newEntry = new Entry() { Value = value, Description = description, CreatedDateTime = DateTime.UtcNow };
+            Entry newEntry = new Entry(entry) { CreatedDateTime = DateTime.UtcNow };
 
             // save
             Entries.Add(newEntry);

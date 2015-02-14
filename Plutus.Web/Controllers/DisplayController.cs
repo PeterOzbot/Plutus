@@ -29,7 +29,7 @@ namespace Plutus.Web.Controllers {
         [Authorize]
         public ActionResult GeneralDisplay() {
             // load the data
-            List<IEntry> entries = EntryContext.Load(new StandardFilter(10, EntryType.All)).ToList();
+            List<IEntry> entries = EntryContext.Load(new StandardFilter(50, EntryType.All)).ToList();
 
             // create EntryListViewModel
             EntryListViewModel entryListViewModel = new EntryListViewModel(entries);
@@ -37,8 +37,11 @@ namespace Plutus.Web.Controllers {
             // create EntriesGraphViewModel
             EntriesGraphViewModel entriesGraphViewModel = new EntriesGraphViewModel();
 
+            // create EntriesStatisticsViewModel
+            EntriesStatisticsViewModel entriesStatisticsViewModel = new EntriesStatisticsViewModel(entries);
+
             // create generalDisplayViewModel
-            GeneralDisplayViewModel generalDisplayViewModel = new GeneralDisplayViewModel(entryListViewModel, entriesGraphViewModel);
+            GeneralDisplayViewModel generalDisplayViewModel = new GeneralDisplayViewModel(entryListViewModel, entriesGraphViewModel, entriesStatisticsViewModel);
 
             // return view
             return View(generalDisplayViewModel);
