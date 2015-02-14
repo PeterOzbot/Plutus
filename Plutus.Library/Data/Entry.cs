@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using Plutus.Portable.Data;
@@ -25,5 +26,10 @@ namespace Plutus.Library.Data {
         /// TODO
         /// </summary>
         public string Description { get; set; }
+        /// <summary>
+        /// TODO
+        /// </summary>
+        [NotMapped]
+        public EntryType Type { get { return Value > 0 ? EntryType.Positive : EntryType.Negative; } }
     }
 }

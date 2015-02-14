@@ -29,7 +29,7 @@ namespace Plutus.Web.Controllers {
         [Authorize]
         public ActionResult GeneralDisplay() {
             // load the data
-            List<IEntry> entries = EntryContext.Load(new StandardFilter(10, EntryType.Negative)).ToList();
+            List<IEntry> entries = EntryContext.Load(new StandardFilter(10, EntryType.All)).ToList();
 
             // create EntryListViewModel
             EntryListViewModel entryListViewModel = new EntryListViewModel(entries);

@@ -8,15 +8,31 @@
 <div class="entryList">
     <div class="entryList-title">
         <p>Entries</p>
-
+    </div>
+    <div class="entryList-content">
         @foreach (IEntry entry in Model.Entries) {
             <text>
-                <p>
-                    @entry.Value
-                    @entry.Description
-                </p>
+                <div class="entry-cell-container">
+                    <div class="entry-cell-icon">
+                        @if (entry.Value < 0) {
+                            <text>
+                                <i class="fa fa-arrow-circle-down" style="color:red;" title=""></i>
+                            </text>
+                        }
+                        else {
+                            <text>
+                                <i class="fa fa-arrow-circle-up" style="color:green;" title=""></i>
+                            </text>
+                        }
+                    </div>
+                    <div class="entry-cell-value">
+                        @entry.Value
+                    </div>
+                    <div class="entry-cell-description">
+                        @entry.Description
+                    </div>
+                </div>
             </text>
         }
-
     </div>
 </div>

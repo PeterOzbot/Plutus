@@ -17,5 +17,9 @@ namespace Plutus.Portable.Data {
         /// TODO
         /// </summary>
         double Value { get; set; }
+        /// <summary>
+        /// TODO
+        /// </summary>
+        EntryType Type { get; }
     }
 }
