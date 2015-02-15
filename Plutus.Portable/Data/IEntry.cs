@@ -20,6 +20,10 @@ namespace Plutus.Portable.Data {
         /// <summary>
         /// TODO
         /// </summary>
+        DateTime CreatedDateTime { get; set; }
+        /// <summary>
+        /// TODO
+        /// </summary>
         EntryType Type { get; }
     }
 }

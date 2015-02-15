@@ -13,7 +13,7 @@ namespace Plutus.Portable.Search {
         /// <summary>
         /// TODO
         /// </summary>
-        int Top { get; }
+        int? Top { get; }
         /// <summary>
         /// TODO
         /// </summary>

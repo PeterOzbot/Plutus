@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 using Plutus.Portable.Data;
 
@@ -21,6 +22,12 @@ namespace Plutus.Web.Models.Entry {
         /// </summary>
         [Required]
         public double Value { get; set; }
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        [IgnoreDataMember]
+        public DateTime CreatedDateTime { get; set; }
 
         /// <summary>
         /// TODO

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using Plutus.Portable.Data;
+using Plutus.Portable.Statistics;
 using Plutus.Web.Library.Search;
 using Plutus.Web.Models;
 
@@ -19,6 +20,11 @@ namespace Plutus.Web.Controllers {
         /// </summary>
         [Dependency]
         public IEntryContext EntryContext { get; set; }
+        /// <summary>
+        /// TODO
+        /// </summary>
+        [Dependency]
+        public IStatisticsParser StatisticsParser { get; set; }
 
 
 
@@ -29,16 +35,23 @@ namespace Plutus.Web.Controllers {
         [Authorize]
         public ActionResult GeneralDisplay() {
             // load the data
-            List<IEntry> entries = EntryContext.Load(new StandardFilter(50, EntryType.All)).ToList();
+            List<IEntry> entries = EntryContext.LoadEntries(new StandardFilter(null, EntryType.All)).ToList();
 
             // create EntryListViewModel
             EntryListViewModel entryListViewModel = new EntryListViewModel(entries);
 
+            //
+
+
+
             // create EntriesGraphViewModel
-            EntriesGraphViewModel entriesGraphViewModel = new EntriesGraphViewModel();
+            EntriesGraphViewModel entriesGraphViewModel = new EntriesGraphViewModel(entries);
+
+            // load statistics
+            IStatisticsData statisticsData = StatisticsParser.Parse(entries);
 
             // create EntriesStatisticsViewModel
-            EntriesStatisticsViewModel entriesStatisticsViewModel = new EntriesStatisticsViewModel(entries);
+            EntriesStatisticsViewModel entriesStatisticsViewModel = new EntriesStatisticsViewModel(statisticsData);
 
             // create generalDisplayViewModel
             GeneralDisplayViewModel generalDisplayViewModel = new GeneralDisplayViewModel(entryListViewModel, entriesGraphViewModel, entriesStatisticsViewModel);

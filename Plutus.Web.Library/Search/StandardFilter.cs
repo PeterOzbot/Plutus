@@ -14,7 +14,7 @@ namespace Plutus.Web.Library.Search {
         /// <summary>
         /// TODO
         /// </summary>
-        public int Top { get; private set; }
+        public int? Top { get; private set; }
         /// <summary>
         /// TODO
         /// </summary>
@@ -28,7 +28,7 @@ namespace Plutus.Web.Library.Search {
         /// <summary>
         /// TODO
         /// </summary>
-        public StandardFilter(int top, EntryType entryType, int? lastID = null) {
+        public StandardFilter(int? top, EntryType entryType, int? lastID = null) {
             Top = top;
             Type = entryType;
             LastID = lastID;

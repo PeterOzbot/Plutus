@@ -47,13 +47,10 @@
         $('#myModal').modal('hide');
         $(".entryList-content").prepend(response.Entry);
     }
-    function OnBegin(response) {
-        if (!$("#EditEntryForm").valid()) {
-            alert("notValid!");
-        }
-        else {
-            alert("start!");
-        }
+    function OnBegin() {
+        //if (!$("#EditEntryForm").valid()) {
+        //    alert("notValid!");
+        //}
     }
 
     $(".focusFirst").val("");

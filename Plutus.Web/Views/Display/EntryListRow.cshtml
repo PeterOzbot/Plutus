@@ -1,19 +1,20 @@
 ﻿@using Plutus.Portable.Data
 @model  Plutus.Portable.Data.IEntry
+
 <div class="entry-cell-container">
 
     <table style="width:100%;">
         <tr>
             <td>
                 <div class="entry-cell-icon">
-                    @if (Model.Value < 0) {
+                    @if (Model.Type == EntryType.Negative) {
                         <text>
-                            <i class="fa fa-arrow-circle-down" style="color:red;" title=""></i>
+                            <i class="fa fa-arrow-circle-down" style="color:#F7977A;" title=""></i>
                         </text>
                     }
                     else {
                         <text>
-                            <i class="fa fa-arrow-circle-up" style="color:green;" title=""></i>
+                            <i class="fa fa-arrow-circle-up" style="color:#78DD77;" title=""></i>
                         </text>
                     }
                 </div>
@@ -25,7 +26,14 @@
             </td>
         </tr>
         <tr>
-            <td align="center" colspan=2>
+            <td colspan=2>
+                <div class="entry-cell-dateTime">
+                    @Model.CreatedDateTime.ToString()
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=2>
                 <div class="entry-cell-description">
                     @Model.Description
                 </div>

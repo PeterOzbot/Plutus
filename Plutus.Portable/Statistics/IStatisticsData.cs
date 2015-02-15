@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Plutus.Portable.Framework;
-using Plutus.Portable.Search;
-using Plutus.Portable.Statistics;
 
-namespace Plutus.Portable.Data {
+namespace Plutus.Portable.Statistics {
     /// <summary>
     /// TODO
     /// </summary>
-    public interface IEntryContext {
+    public interface IStatisticsData {
         /// <summary>
         /// TODO
         /// </summary>
-        IEnumerable<IEntry> LoadEntries(IFilter filter);
+        double TotalPositive { get; }
         /// <summary>
         /// TODO
         /// </summary>
-        IEntry Create(IEntry entry);
+        double TotalNegative { get; }
+        /// <summary>
+        /// TODO
+        /// </summary>
+        double Sum { get; }
     }
 }

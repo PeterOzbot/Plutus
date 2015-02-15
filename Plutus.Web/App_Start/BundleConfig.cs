@@ -31,10 +31,16 @@ namespace Plutus.Web {
             bundles.Add(new StyleBundle("~/GeneralDisplay").Include(
                       "~/Content/GeneralDisplay.css"));
 
+            bundles.Add(new ScriptBundle("~/bundles/d3").Include(
+                                "~/Scripts/d3/d3.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/entries").Include(
+                         "~/Scripts/entries/graph.js"));
+
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
-            BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = false;
         }
     }
 }

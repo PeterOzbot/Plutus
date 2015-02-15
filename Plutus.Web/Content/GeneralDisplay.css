@@ -1,7 +1,8 @@
 ﻿/* Graph */
 .entriesGraphs {
     height: 400px;
-    border: 1px solid blue;
+    margin-top: 5px;
+    border: 1px solid transparent;
     /*width: 50%;
     height: 300px;
     float: right;*/
@@ -14,23 +15,39 @@
     width: 25%;
 }
 
+path {
+    /*stroke: steelblue;*/
+    stroke-width: 3;
+    fill: none;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+
+
+
 
 
 
 /* List */
 .entryList {
+    border: 1px solid transparent;
+    margin-top: 5px;
     height: 800px;
-    /*width: 50%;
-    height: 300px;
-    margin-top: 50px;*/
 }
 
 .entryList-title {
     font-size: 25px;
     text-align: center;
+    height: 35px;
     margin-bottom: 20px;
     margin-top: 15px;
-    /*border:1px solid blue;*/
 }
 
     .entryList-title:after {
@@ -44,14 +61,22 @@
 
 .entryList-content {
     overflow: auto;
-    height: 800px;
+    height: 728px;
 }
+
+
+
+
+
+
 
 
 
 /* Statistics */
 .entriesStatistics {
-    height: 400px;
+    margin-top: 5px;
+    border: 1px solid transparent;
+    height: 395px;
 }
 
 .entriesStatistics-title {
@@ -66,7 +91,7 @@
         height: 5px;
         border-bottom: 1px solid #E1E1E1;
         left: 0;
-        width: 90%;
+        width: 100%;
     }
 
 .entriesStatistics-content {
@@ -88,7 +113,7 @@
 }
 
 .totalSpending-value {
-    color: red;
+    color: #F7977A;
 }
 
 .entriesStatistics-content-totalEarnings {
@@ -98,8 +123,28 @@
 }
 
 .totalEarnings-value {
-    color: green;
+    color: #78DD77;
 }
+
+.entriesStatistics-content-sum {
+}
+
+.sum-label {
+}
+
+.sum-value-positive {
+    color: #78DD77;
+}
+
+.sum-value-negative {
+    color: #F7977A;
+}
+
+
+
+
+
+
 
 
 /*List Elements*/
@@ -107,6 +152,7 @@
     border: 1px solid #E1E1E1;
     background-color: #EBEBEB;
     margin-top: 20px;
+    margin-right: 10px;
 }
 
 .entry-cell-value {
@@ -144,4 +190,8 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;*/
+}
+
+.entry-cell-dateTime {
+    font-size: 10px;
 }

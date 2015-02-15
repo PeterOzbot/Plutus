@@ -18,7 +18,7 @@
                             Total Earnings
                         </div>
                         <div class="totalEarnings-value">
-                            @Model.TotalEarnings
+                            @Model.StatisticsData.TotalPositive
                         </div>
                     </div>
                 </td>
@@ -28,7 +28,17 @@
                             Total Spending
                         </div>
                         <div class="totalSpending-value">
-                            @Model.TotalSpending
+                            @Model.StatisticsData.TotalNegative
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="entriesStatistics-content-sum">
+                        <div class="sum-label">
+                            Sum
+                        </div>
+                        <div class="sum-value-@(Model.StatisticsData.Sum > 0 ? "positive":"negative")">
+                            @Model.StatisticsData.Sum
                         </div>
                     </div>
                 </td>
