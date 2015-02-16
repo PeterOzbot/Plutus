@@ -64,8 +64,10 @@ var svg = d3.select(".entriesGraphs")
 svg.append("linearGradient")
         .attr("id", "line-gradient")
         .attr("gradientUnits", "userSpaceOnUse")
-        .attr("x1", 0).attr("y1", y(minValue))
-        .attr("x2", 0).attr("y2", y(maxValue))
+        .attr("x1", 0)
+        .attr("y1", y(-1))
+        .attr("x2", 0)
+        .attr("y2", y(1))
     .selectAll("stop")
     .data([
                 { offset: "0%", color: "red" },
