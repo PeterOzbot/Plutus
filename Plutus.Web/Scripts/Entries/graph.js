@@ -2,8 +2,8 @@
 
 // Get the data
 response.forEach(function (d) {
-    d.X = new Date(parseInt(d.CreatedDateTime.substr(6)));
-    d.Y = +d.Value;
+    d.X = new Date(parseInt(d.X.substr(6)));
+    d.Y = +d.Y;
 });
 
 // Set the dimensions of the canvas / graph

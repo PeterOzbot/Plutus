@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Plutus.Portable.Data;
+using Plutus.Portable.Parsing;
 
-namespace Plutus.Portable.Statistics {
+namespace Plutus.Portable.Graph {
     /// <summary>
     /// TODO
     /// </summary>
-    public interface IStatisticsParser {
+    public interface IGraphProcessor : IEntryProcessor {
         /// <summary>
         /// TODO
         /// </summary>
-        IStatisticsData Parse(IEnumerable<IEntry> entries);
+        IEnumerable<IPoint> Result { get; }
     }
 }

@@ -37,6 +37,9 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Graph\IGraphProcessor.cs" />
+    <Compile Include="Graph\IPoint.cs" />
+    <Compile Include="Parsing\IEntryProcessor.cs" />
     <Compile Include="Data\EntryType.cs" />
     <Compile Include="Data\IEntry.cs" />
     <Compile Include="Data\IEntryContext.cs" />
@@ -44,7 +47,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search\IFilter.cs" />
     <Compile Include="Statistics\IStatisticsData.cs" />
-    <Compile Include="Statistics\IStatisticsParser.cs" />
+    <Compile Include="Parsing\IEntryParsing.cs" />
+    <Compile Include="Statistics\IStatisticsProcessor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

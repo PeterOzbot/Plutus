@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Plutus.Portable.Data;
+using Plutus.Portable.Graph;
 
 namespace Plutus.Web.Models {
     /// <summary>
@@ -12,15 +13,15 @@ namespace Plutus.Web.Models {
         /// <summary>
         /// TODO
         /// </summary>
-        public IEnumerable<IEntry> Entries { get; set; }
+        public IEnumerable<IPoint> Points { get; set; }
 
 
 
         /// <summary>
         /// TODO
         /// </summary>
-        public EntriesGraphViewModel(IEnumerable<IEntry> entries) {
-            Entries = entries.Reverse();
+        public EntriesGraphViewModel(IEnumerable<IPoint> points) {
+            Points = points;
         }
     }
 }
