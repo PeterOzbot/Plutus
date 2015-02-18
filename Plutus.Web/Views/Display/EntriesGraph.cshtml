@@ -12,4 +12,10 @@
 
 <script>
     var response =  @Html.Raw(Json.Encode(Model.Points));
+
+    //var graph = new Graph();
+    //graph.Draw();
+
+    var barChart = new BarChart();
+    barChart.Draw();
 </script>

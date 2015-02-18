@@ -9,7 +9,7 @@ namespace Plutus.Library.Graph {
     /// <summary>
     /// TODO
     /// </summary>
-    public class Point : IPoint {
+    public class Point : IPoint<DateTime, PointValue> {
         /// <summary>
         /// TODO
         /// </summary>
@@ -17,16 +17,37 @@ namespace Plutus.Library.Graph {
         /// <summary>
         /// TODO
         /// </summary>
-        public double Y { get; private set; }
+        public PointValue Y { get; private set; }
 
 
 
         /// <summary>
         /// TODO
         /// </summary>
-        public Point(DateTime x, double y) {
+        public Point(DateTime x, PointValue y) {
             X = x;
             Y = y;
         }
+    }
+
+    /// <summary>
+    /// TODO
+    /// </summary>
+    public class PointValue {
+        /// <summary>
+        /// TODO
+        /// </summary>
+        public double Positive { get; set; }
+        /// <summary>
+        /// TODO
+        /// </summary>
+        public double Negative { get; set; }
+
+
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        public PointValue() { }
     }
 }

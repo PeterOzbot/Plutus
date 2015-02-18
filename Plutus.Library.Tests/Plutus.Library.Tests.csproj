@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="EntryContextTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GraphProcessorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Plutus.Library\Plutus.Library.csproj">

@@ -1,13 +1,13 @@
-﻿function Graph() {
+﻿function BarChart() {
 }
 
-Graph.prototype.Draw = function () {
+BarChart.prototype.Draw = function () {
     d3.selectAll("svg").remove();
 
     // Get the data
     response.forEach(function (d) {
         d.X = new Date(parseInt(d.X.substr(6)));
-        d.Y = +d.Y;
+        d.Y = d.Y;
     });
 
     // Set the dimensions of the canvas / graph
@@ -20,14 +20,21 @@ Graph.prototype.Draw = function () {
     var maxDate = response[response.length - 1].X;
 
     var minValue = d3.min(response, function (d) {
-        return d.Y;
+        return d.Y.Negative;
     });
     var maxValue = d3.max(response, function (d) {
-        return d.Y;
+        return d.Y.Positive;
     });
 
     minValue = minValue + minValue * 0.1;
     maxValue = maxValue + maxValue * 0.1;
+
+    if (Math.abs(maxValue) > Math.abs(minValue)) {
+        minValue = -maxValue;
+    }
+    else {
+        maxValue = -minValue;
+    }
 
     // color
     //var colorFunction = d3.scale.linear().domain(["#F7977A", "#78DD77"]).range([minValue, maxValue]);
@@ -37,23 +44,16 @@ Graph.prototype.Draw = function () {
 
     // Set the ranges
     var y = d3.scale.linear().domain([minValue, maxValue]).range([height, 0]);
+    var yPositive = d3.scale.linear().domain([minValue, maxValue]).range([height,0]);
+    var yNegative = d3.scale.linear().domain([minValue, maxValue]).range([height, 0]);
     var x = d3.time.scale().domain([minDate, maxDate]).range([0, width]);
 
     // Define the axes
     var xAxis = d3.svg.axis().scale(x)
-        .orient("bottom").ticks(5);
+        .orient("bottom").ticks(20);
 
     var yAxis = d3.svg.axis().scale(y)
-        .orient("left").ticks(5);
-
-    // Define the line
-    var valueline = d3.svg.line()
-        .x(function (d) {
-            return x(d.X);
-        })
-        .y(function (d) {
-            return y(d.Y);
-        });
+        .orient("left").ticks(10);
 
     // Adds the svg canvas
     var svg = d3.select(".entriesGraphs")
@@ -64,32 +64,39 @@ Graph.prototype.Draw = function () {
             .attr("transform",
                   "translate(" + 50 + "," + 10 + ")");
 
-    // gradient color
-    svg.append("linearGradient")
-            .attr("id", "line-gradient")
-            .attr("gradientUnits", "userSpaceOnUse")
-            .attr("x1", 0)
-            .attr("y1", y(-1))
-            .attr("x2", 0)
-            .attr("y2", y(1))
-        .selectAll("stop")
-        .data([
-                    { offset: "0%", color: "red" },
-                    { offset: "30%", color: "red" },
-                    { offset: "45%", color: "red" },
-                    { offset: "55%", color: "lawngreen" },
-                    { offset: "60%", color: "lawngreen" },
-                    { offset: "100%", color: "lawngreen" }
-        ])
-        .enter().append("stop")
-            .attr("offset", function (d) { return d.offset; })
-            .attr("stop-color", function (d) { return d.color; });
+    var barWidth = 20;
 
-    // create path
-    var path = svg.append("path")
-                  .attr("class", "line")
-                  .style("stroke", "url(#line-gradient)")
-                  .attr("d", valueline(response));
+    var bar = svg.selectAll("g")
+        .data(response)
+      .enter().append("g")
+        .attr("transform", function (d, i) { return "translate(" + i * barWidth + "," + 0 + ")"; });
+
+    bar.append("rect")
+        .attr("y", function (d) {
+            return yPositive(d.Y.Positive);
+        })
+        .attr("height", function (d) {
+            return (height / 2) - yPositive(d.Y.Positive);
+        })
+        .attr("fill", "#78DD77")
+        .attr("width", barWidth - 1);
+
+
+    bar.append("rect")
+        .attr("y", function (d) {
+            return yNegative(0);
+        })
+        .attr("height", function (d) {
+            return yNegative(d.Y.Negative) - (height/2);
+        })
+        .attr("fill", "#F7977A")
+        .attr("width", barWidth - 1);
+
+    //bar.append("text")
+    //    .attr("x", barWidth / 2)
+    //    .attr("y", function (d) { return y(d.Y) + 3; })
+    //    .attr("dy", ".75em")
+    //    .text(function (d) { return d.Y; });
 
 
     // Add the X Axis
@@ -102,4 +109,4 @@ Graph.prototype.Draw = function () {
     svg.append("g")
         .attr("class", "y axis")
         .call(yAxis);
-};
+}

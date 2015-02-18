@@ -26,16 +26,15 @@ namespace Plutus.Web {
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/font-awesome.css",
-                      "~/Content/site.css"));
-
-            bundles.Add(new StyleBundle("~/GeneralDisplay").Include(
+                      "~/Content/site.css",
                       "~/Content/GeneralDisplay.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/d3").Include(
                                 "~/Scripts/d3/d3.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/entries").Include(
-                         "~/Scripts/entries/graph.js"));
+                         "~/Scripts/entries/graph.js",
+                          "~/Scripts/entries/barChart.js"));
 
 
             // Set EnableOptimizations to false for debugging. For more information,
