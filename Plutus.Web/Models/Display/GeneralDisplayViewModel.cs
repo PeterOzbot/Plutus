@@ -20,6 +20,10 @@ namespace Plutus.Web.Models {
         /// TODO
         /// </summary>
         public EntriesStatisticsViewModel EntriesStatisticsViewModel { get; set; }
+        /// <summary>
+        /// TODO
+        /// </summary>
+        public FilterViewModel FilterViewModel { get; set; }
 
 
 
@@ -27,10 +31,14 @@ namespace Plutus.Web.Models {
         /// <summary>
         /// TODO
         /// </summary>
-        public GeneralDisplayViewModel(EntryListViewModel entryListViewModel, EntriesGraphViewModel entriesGraphViewModel, EntriesStatisticsViewModel entriesStatisticsViewModel) {
+        public GeneralDisplayViewModel(EntryListViewModel entryListViewModel
+                                     , EntriesGraphViewModel entriesGraphViewModel
+                                     , EntriesStatisticsViewModel entriesStatisticsViewModel
+                                     , FilterViewModel filterViewModel) {
             EntriesGraphViewModel = entriesGraphViewModel;
             EntryListViewModel = entryListViewModel;
             EntriesStatisticsViewModel = entriesStatisticsViewModel;
+            FilterViewModel = filterViewModel;
         }
     }
 }

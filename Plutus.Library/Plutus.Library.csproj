@@ -52,6 +52,7 @@
     <Compile Include="Graph\Point.cs" />
     <Compile Include="Parsing\EntryParsing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Search\FilterData.cs" />
     <Compile Include="Statistics\DefaultStatistics.cs" />
     <Compile Include="Statistics\StatisticsProcessor.cs" />
   </ItemGroup>

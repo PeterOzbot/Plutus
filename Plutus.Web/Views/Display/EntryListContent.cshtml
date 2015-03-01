@@ -1,0 +1,10 @@
+﻿@model IEnumerable<IEntry>
+@using Plutus.Portable.Data
+
+@{
+    Layout = "";
+}
+
+@foreach (IEntry entry in Model) {
+    Html.RenderPartial("EntryListRow", entry);
+}

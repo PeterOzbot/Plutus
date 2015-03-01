@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/themes/base/css")
+    @Styles.Render("~/Content/jQRangeSlider")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
 
@@ -35,6 +36,8 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jQRangeSlider")
+    @Scripts.Render("~/bundles/filtering")
     @Scripts.Render("~/bundles/d3")
     @Scripts.Render("~/bundles/entries")
 
@@ -42,13 +45,6 @@
         @RenderBody()
     </div>
 
-
-    @*<script src="~/Scripts/jquery-2.1.3.js"></script>
-    <script src="~/Scripts/jquery-ui-1.11.3.js"></script>
-    @Scripts.Render("~/bundles/bootstrap")
-    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-    <script src="~/Scripts/jquery.validate.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>*@
     @RenderSection("Scripts", required: false)
 
     <script>

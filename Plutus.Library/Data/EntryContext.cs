@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Plutus.Library.Search;
 using Plutus.Library.Statistics;
 using Plutus.Portable.Data;
 using Plutus.Portable.Framework;
@@ -41,87 +42,56 @@ namespace Plutus.Library.Data {
             filter = filter ?? new DefaultFilter();
 
             // filter !
-            if (filter.Top.HasValue) {
-                result = (from entry in Entries
-                          where
-                              // filter for type
-                          ((filter.Type == EntryType.All) || (filter.Type == EntryType.Negative && entry.Value < 0) || (filter.Type == EntryType.Positive && entry.Value > 0))
-                              // filter by last id
-                          && ((filter.LastID.HasValue && entry.ID > filter.LastID) || !filter.LastID.HasValue)
+            //if (filter.Top.HasValue) {
+            result = (from entry in Entries
+                      where
+                          //    // filter for type
+                          //((filter.Type == EntryType.All) || (filter.Type == EntryType.Negative && entry.Value < 0) || (filter.Type == EntryType.Positive && entry.Value > 0))
+                          //    // filter by last id
+                          //&& ((filter.LastID.HasValue && entry.ID > filter.LastID) || !filter.LastID.HasValue)
 
-                          // order
-                          orderby entry.CreatedDateTime descending
-                          select entry)
+                      // filter by date range
+                      entry.CreatedDateTime >= filter.MinDate && entry.CreatedDateTime <= filter.MaxDate
+
+                      // order
+                      orderby entry.CreatedDateTime descending
+                      select entry);
                     // take top
-                          .Take(filter.Top.Value);
-            }
-            else {
-                result = from entry in Entries
-                         where
-                             // filter for type
-                         ((filter.Type == EntryType.All) || (filter.Type == EntryType.Negative && entry.Value < 0) || (filter.Type == EntryType.Positive && entry.Value > 0))
-                             // filter by last id
-                         && ((filter.LastID.HasValue && entry.ID > filter.LastID) || !filter.LastID.HasValue)
+                      //    .Take(filter.Top.Value);
+            //}
+            //else {
+            //    result = from entry in Entries
+            //             where
+            //                 // filter for type
+            //             ((filter.Type == EntryType.All) || (filter.Type == EntryType.Negative && entry.Value < 0) || (filter.Type == EntryType.Positive && entry.Value > 0))
+            //                 // filter by last id
+            //             && ((filter.LastID.HasValue && entry.ID > filter.LastID) || !filter.LastID.HasValue)
 
-                         // order
-                         orderby entry.CreatedDateTime descending
-                         select entry;
-            }
+            //             // order
+            //             orderby entry.CreatedDateTime descending
+            //             select entry;
+            //}
 
 
             // return data
             return result;
         }
 
+        /// <summary>
+        /// TODO
+        /// </summary>
+        public IFilterData GetFilterData() {
+            // get data
+            IEnumerable<FilterData> filterData = from entry in Entries
+                                                 group entry by 0 into entryGroup
+                                                 select new FilterData() {
+                                                     MinDate = entryGroup.Min(entry => entry.CreatedDateTime),
+                                                     MaxDate = entryGroup.Max(entry => entry.CreatedDateTime)
+                                                 };
 
-        ///// <summary>
-        ///// TODO
-        ///// </summary>
-        //public IStatisticsData LoadEntriesStatistics(IFilter filter) {
-        //    IEnumerable<PartialStatisticData> partialStatisticData;
-
-        //    // get statistics grouped by positive/negative value
-        //    partialStatisticData = from entry in Entries
-        //                           group entry by entry.Value > 0
-        //                               into groupedEntries
-        //                               select new PartialStatisticData() { Value = groupedEntries.Sum(entry => entry.Value), GroupKey = groupedEntries.Key };
-
-        //    // create statistic data
-        //    IStatisticsData statisticData;
-
-        //    // check for data
-        //    if (partialStatisticData.Any()) {
-
-        //        // if there are two results it means that both positive and negative exists nad both values should be used
-        //        if (partialStatisticData.Count() == 2) {
-
-        //            if (partialStatisticData.First().Value > 0) {
-        //                statisticData = new DefaultStatistics(partialStatisticData.First().Value, partialStatisticData.Last().Value);
-        //            }
-        //            else {
-        //                statisticData = new DefaultStatistics(partialStatisticData.Last().Value, partialStatisticData.First().Value);
-        //            }
-        //        }
-        //        else {
-
-        //            // only one positive or only negative exists
-        //            // check which and create statistic
-        //            if (partialStatisticData.First().GroupKey) {
-        //                statisticData = new DefaultStatistics(partialStatisticData.First().Value, 0);
-        //            }
-        //            else {
-        //                statisticData = new DefaultStatistics(0, partialStatisticData.First().Value);
-        //            }
-        //        }
-        //    }
-        //    else {
-        //        // if no data just create empty
-        //        statisticData = new DefaultStatistics(0, 0);
-        //    }
-
-        //    // return result
-        //    return statisticData;
-        //}
+            // return data
+            return filterData.Count() > 0 ? filterData.First() : new FilterData() { MinDate = DateTime.UtcNow.AddDays(-14), MaxDate = DateTime.UtcNow };
+        }
 
         /// <summary>
         /// TODO
@@ -145,16 +115,10 @@ namespace Plutus.Library.Data {
         /// <summary>
         /// TODO
         /// </summary>
-        public int? Top { get { return null; ; } }
-
+        public DateTime MinDate { get { return DateTime.UtcNow.AddDays(14); } }
         /// <summary>
         /// TODO
         /// </summary>
-        public EntryType Type { get { return EntryType.All; } }
-
-        /// <summary>
-        /// TODO
-        /// </summary>
-        public int? LastID { get { return null; } }
+        public DateTime MaxDate { get { return DateTime.UtcNow; } }
     }
 }

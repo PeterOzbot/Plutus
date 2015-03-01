@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using Plutus.Portable.Data;
 using Plutus.Portable.Graph;
 using Plutus.Portable.Parsing;
+using Plutus.Portable.Search;
 using Plutus.Portable.Statistics;
 using Plutus.Web.Library.Search;
 using Plutus.Web.Models;
@@ -45,9 +47,27 @@ namespace Plutus.Web.Controllers {
         /// TODO
         /// </summary>
         [Authorize]
-        public ActionResult GeneralDisplay() {
+        public ActionResult GeneralDisplay(StandardFilter standardFilter) {
+            GeneralDisplayViewModel generalDisplayViewModel = CreateGeneralDisplayViewModel(standardFilter);
+
+            // return view
+            return View(generalDisplayViewModel);
+        }
+        /// <summary>
+        /// TODO
+        /// </summary>
+        [Authorize]
+        public ActionResult GeneralDisplayContent(StandardFilter standardFilter) {
+            Task.Delay(5000).Wait();
+            GeneralDisplayViewModel generalDisplayViewModel = CreateGeneralDisplayViewModel(standardFilter);
+
+            // return view
+            return View(generalDisplayViewModel);
+        }
+
+        private GeneralDisplayViewModel CreateGeneralDisplayViewModel(StandardFilter standardFilter) {
             // load the data
-            IEnumerable<IEntry> entries = EntryContext.LoadEntries(new StandardFilter(null, EntryType.All));
+            IEnumerable<IEntry> entries = EntryContext.LoadEntries(standardFilter);
 
             // register parsers
             EntryParsing.Register(GraphProcessor);
@@ -66,11 +86,18 @@ namespace Plutus.Web.Controllers {
             // create EntriesStatisticsViewModel
             EntriesStatisticsViewModel entriesStatisticsViewModel = new EntriesStatisticsViewModel(StatisticsProcessor.Result);
 
-            // create generalDisplayViewModel
-            GeneralDisplayViewModel generalDisplayViewModel = new GeneralDisplayViewModel(entryListViewModel, entriesGraphViewModel, entriesStatisticsViewModel);
+            //TODO: move filter to another action and create sepparate call for it or something
+            // get filter data
+            IFilterData filterData = EntryContext.GetFilterData();
 
-            // return view
-            return View(generalDisplayViewModel);
+            // create FilterViewModel
+            FilterViewModel filterViewModel = new FilterViewModel(filterData);
+
+
+            // create generalDisplayViewModel
+            GeneralDisplayViewModel generalDisplayViewModel = new GeneralDisplayViewModel(entryListViewModel, entriesGraphViewModel, entriesStatisticsViewModel, filterViewModel);
+            // return ...
+            return generalDisplayViewModel;
         }
     }
 }

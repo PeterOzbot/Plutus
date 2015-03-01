@@ -7,14 +7,44 @@
     ViewBag.Title = "General Display";
 }
 
+@Scripts.Render("~/bundles/generalDisplay")
 
-<div class="row">
-    <div class="col-md-4">
-        @{ Html.RenderPartial("entrylist", Model.EntryListViewModel); }
-    </div>
-    <div class="col-md-8">
-        @{ Html.RenderPartial("EntriesStatistics", Model.EntriesStatisticsViewModel);}
+@{ Html.RenderPartial("Filter", Model.FilterViewModel);}
 
-        @{ Html.RenderPartial("EntriesGraph", Model.EntriesGraphViewModel);}
-    </div>
+<div id="generalDisplayContent">
+    @{ Html.RenderPartial("GeneralDisplayContent", Model);}
 </div>
+
+<div class="loading" id="generalDisplayLoading">
+    <div class="dot"></div>
+    <div class="dot2"></div>
+</div>
+
+<script>
+    var reloadAjaxCall;
+    function RefreshGeneralDisplay(filterData) {
+        $("#generalDisplayContent").html("");
+        $("#generalDisplayLoading").css("display", "block");
+        $("#slider").dateRangeSlider({
+            enabled: false
+        });
+
+        if (reloadAjaxCall && reloadAjaxCall.readystate != 4) {
+            reloadAjaxCall.abort();
+        }
+        reloadAjaxCall = $.ajax({
+            cache: false,
+            type: "POST",
+            url: "@Url.Action("GeneralDisplayContent", "Display")",
+            data: JSON.stringify(filterData),
+            contentType: 'application/json',
+            success: function (response) {
+                $("#generalDisplayLoading").css("display", "none");
+                $("#generalDisplayContent").html(response);
+                $("#slider").dateRangeSlider({
+                    enabled: true
+                });
+            }
+        });
+    }
+</script>

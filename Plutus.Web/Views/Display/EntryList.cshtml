@@ -12,8 +12,6 @@
         </p>
     </div>
     <div class="entryList-content">
-            @foreach (IEntry entry in Model.Entries) {
-                Html.RenderPartial("EntryListRow", entry);
-            }
+        @{Html.RenderPartial("EntryListContent", Model.Entries);}
     </div>
 </div>

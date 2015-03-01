@@ -3,26 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Plutus.Portable.Framework;
 using Plutus.Portable.Search;
-using Plutus.Portable.Statistics;
 
-namespace Plutus.Portable.Data {
+namespace Plutus.Library.Search {
     /// <summary>
     /// TODO
     /// </summary>
-    public interface IEntryContext {
+    public class FilterData : IFilterData {
         /// <summary>
         /// TODO
         /// </summary>
-        IEnumerable<IEntry> LoadEntries(IFilter filter);
+        public DateTime MinDate { get;  set; }
         /// <summary>
         /// TODO
         /// </summary>
-        IFilterData GetFilterData();
+        public DateTime MaxDate { get;  set; }
+
+
+
         /// <summary>
         /// TODO
         /// </summary>
-        IEntry Create(IEntry entry);
+        public FilterData() { }
     }
 }

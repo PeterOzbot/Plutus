@@ -1,18 +1,25 @@
 ﻿function BarChart() {
+    this.Width = 700;
+    this.Margin = { top: 30, right: 20, bottom: 30, left: 50 };
 }
 
-BarChart.prototype.Draw = function () {
+BarChart.prototype.SetWidth = function (width) {
+    this.Width = width - (this.Margin.right + this.Margin.left);
+}
+
+BarChart.prototype.Draw = function (response) {
     d3.selectAll("svg").remove();
 
     // Get the data
     response.forEach(function (d) {
-        d.X = new Date(parseInt(d.X.substr(6)));
+        if (!(d.X instanceof Date)) {
+            d.X = new Date(parseInt(d.X.substr(6)));
+        }
         d.Y = d.Y;
     });
 
     // Set the dimensions of the canvas / graph
-    var margin = { top: 30, right: 20, bottom: 30, left: 50 },
-        width = 700,//- margin.left - margin.right,
+    var width = this.Width,//- margin.left - margin.right,
         height = 300;//- margin.top - margin.bottom;
 
 
@@ -64,7 +71,7 @@ BarChart.prototype.Draw = function () {
             .attr("transform",
                   "translate(" + 50 + "," + 10 + ")");
 
-    var barWidth = 20;
+    var barWidth = width/response.length;
 
     var bar = svg.selectAll("g")
         .data(response)
@@ -99,6 +106,60 @@ BarChart.prototype.Draw = function () {
     //    .text(function (d) { return d.Y; });
 
 
+
+    // Define the line
+    var valueline = d3.svg.line()
+        .x(function (d) {
+            return x(d.X);
+        })
+        .y(function (d) {
+            return y(d.Y.Positive + d.Y.Negative);
+        });
+
+    var valueline1 = d3.svg.line()
+        .x(function (d) {
+            return x(d.X) + 2;
+        })
+        .y(function (d) {
+            return y(d.Y.Positive + d.Y.Negative) + 2;
+        });
+
+
+    // gradient color
+    svg.append("linearGradient")
+            .attr("id", "line-gradient")
+            .attr("gradientUnits", "userSpaceOnUse")
+            .attr("x1", 0)
+            .attr("y1", y(-1))
+            .attr("x2", 0)
+            .attr("y2", y(1))
+        .selectAll("stop")
+        .data([
+                    { offset: "0%", color: "red" },
+                    { offset: "30%", color: "red" },
+                    { offset: "45%", color: "red" },
+                    { offset: "55%", color: "lawngreen" },
+                    { offset: "60%", color: "lawngreen" },
+                    { offset: "100%", color: "lawngreen" }
+        ])
+        .enter().append("stop")
+            .attr("offset", function (d) { return d.offset; })
+            .attr("stop-color", function (d) { return d.color; });
+
+    // create path
+    var path = svg.append("path")
+                  .attr("class", "line")
+                  .style("stroke", "url(#line-gradient)")
+                  .style("stroke","black")
+                  .attr("d", valueline(response));
+
+    var path = svg.append("path")
+              .attr("class", "line")
+              .style("stroke", "url(#line-gradient)")
+              .style("stroke", "black")
+              .attr("d", valueline1(response));
+
+
     // Add the X Axis
     svg.append("g")
         .attr("class", "x axis")
@@ -109,4 +170,13 @@ BarChart.prototype.Draw = function () {
     svg.append("g")
         .attr("class", "y axis")
         .call(yAxis);
+
+
+
+    d3.select(window).on('resize', resize);
+    var barchart = this;
+    function resize() {
+        barchart.SetWidth($(".entriesGraphs").width());
+        barchart.Draw(response);
+    }
 }

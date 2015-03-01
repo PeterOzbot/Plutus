@@ -71,6 +71,7 @@
     @*function save() {
         $.ajax({
             url: "@Url.Action("CreateEntry", "Entry")",
+            cache: false,
             data: {
                 description: 'Cras dolor est, maximus a sapien ut, volutpat egestas libero. Etiam tempor consectetur nisl non bibendum. Pellentesque convallis non tortor ac ultrices. Mauris at dolor in massa iaculis posuere. Curabitur vehicula non purus quis porttitor. Aenean varius, justo ac dapibus hendrerit, enim nibh varius odio, in ullamcorper nibh nibh rhoncus arcu. Maecenas varius facilisis nisl eu blandit. Donec eget eleifend tortor.',
                 value: '222222222222222.0'

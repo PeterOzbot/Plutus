@@ -1,0 +1,34 @@
+﻿@model Plutus.Web.Models.FilterViewModel
+
+@{
+    Layout = "";
+}
+
+<div class="filterView">
+    <div class="filterView-content">
+        <table style="height:100%; width:100%;">
+            <tr>
+                <td style="width:40%">
+                    <div class="filterView-slider">
+                        <div id="slider"></div>
+                    </div>
+                </td>
+                <td>
+                    <div class="filterTrigger">
+
+                    </div>
+                </td>
+                <td style="width:50%">
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var filter = new Filter(@Html.Raw(Json.Encode(Model.FilterData)), @Html.Raw(Json.Encode(Model.DefaultValue)));
+        filter.Initialize();
+    });
+</script>

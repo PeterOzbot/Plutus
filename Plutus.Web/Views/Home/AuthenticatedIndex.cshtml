@@ -1,5 +1,7 @@
-﻿@{
+﻿@using Plutus.Web.Library.Search
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-@{ Html.RenderAction("GeneralDisplay", "Display"); }
+@{ Html.RenderAction("GeneralDisplay", "Display", new StandardFilter(DateTime.UtcNow.AddDays(-14), DateTime.UtcNow)); }

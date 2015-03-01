@@ -1,0 +1,16 @@
+﻿@model Plutus.Web.Models.GeneralDisplayViewModel
+
+@{
+    Layout = "";
+}
+
+
+<div class="row">
+    <div class="col-md-4">
+        @{ Html.RenderPartial("EntryList", Model.EntryListViewModel); }
+    </div>
+    <div class="col-md-8">
+        @{ Html.RenderPartial("EntriesStatistics", Model.EntriesStatisticsViewModel);}
+        @{ Html.RenderPartial("EntriesGraph", Model.EntriesGraphViewModel);}
+    </div>
+</div>

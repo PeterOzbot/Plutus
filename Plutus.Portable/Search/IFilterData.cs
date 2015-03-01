@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Plutus.Portable.Data;
 
 namespace Plutus.Portable.Search {
     /// <summary>
     /// TODO
     /// </summary>
-    public interface IFilter {
+    public interface IFilterData {
         /// <summary>
         /// TODO
         /// </summary>

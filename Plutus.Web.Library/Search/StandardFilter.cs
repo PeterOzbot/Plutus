@@ -14,27 +14,23 @@ namespace Plutus.Web.Library.Search {
         /// <summary>
         /// TODO
         /// </summary>
-        public int? Top { get; private set; }
+        public DateTime MinDate { get; set; }
         /// <summary>
         /// TODO
         /// </summary>
-        public Portable.Data.EntryType Type { get; private set; }
-        /// <summary>
-        /// TODO
-        /// </summary>
-        public int? LastID { get; private set; }
+        public DateTime MaxDate { get; set; }
 
 
         /// <summary>
         /// TODO
         /// </summary>
-        public StandardFilter(int? top, EntryType entryType, int? lastID = null) {
-            Top = top;
-            Type = entryType;
-            LastID = lastID;
+        public StandardFilter(DateTime minDate, DateTime maxDate) {
+            MaxDate = maxDate;
+            MinDate = minDate;
         }
-
-
-
+        /// <summary>
+        /// TODO
+        /// </summary>
+        public StandardFilter() { }
     }
 }

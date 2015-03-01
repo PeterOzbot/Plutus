@@ -46,6 +46,7 @@
     <Compile Include="Framework\IResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search\IFilter.cs" />
+    <Compile Include="Search\IFilterData.cs" />
     <Compile Include="Statistics\IStatisticsData.cs" />
     <Compile Include="Parsing\IEntryParsing.cs" />
     <Compile Include="Statistics\IStatisticsProcessor.cs" />
